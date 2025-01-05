@@ -1,0 +1,239 @@
+/* .Link {
+  color: black;
+} */
+
+/* <div class="w-25 p-3">Width 25%</div>
+<div class="w-50 p-3">Width 50%</div>
+<div class="w-75 p-3">Width 75%</div>
+<div class="w-100 p-3">Width 100%</div>
+<div class="w-auto p-3">Width auto</div> */
+
+.theme {
+  --bg-color: #111;
+  --main-color: #fefefe;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-color);
+  border-radius: 100%;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+}
+
+.input {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+}
+
+.icon {
+  position: absolute;
+  top: calc(50% -13px);
+  left: calc(50% -13px);
+  width: 26px;
+  height: 26px;
+}
+
+.icon.icon-moon {
+  fill: var(--main-color);
+}
+
+.icon.icon-sun {
+  stroke: var(--main-color);
+  display: none;
+}
+
+.input:checked ~ .icon.icon-sun {
+  display: block;
+}
+
+.input:checked ~ .icon.icon-moon {
+  display: none;
+}
+
+.theme:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+.MenuList-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.MenuDisplay {
+  display: flex;
+  justify-content: center;
+  /* background-color: #006c6c;
+  color: aliceblue; */
+}
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #9fccfa;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  width: 2em;
+  inset: 0;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.switch input:checked + .slider {
+  background: #0974f1;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #0974f1;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.6em);
+}
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+@media only screen and (min-width: 350px) and (max-width: 745px) {
+  .MenuList-1 {
+    font-size: 10px;
+  }
+
+  .theme {
+    height: 30px;
+    width: 30px;
+  }
+
+  .MenuDisplay {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    /
+    /* background-color: #006c6c;
+  color: aliceblue; */
+  }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1000px) {
+  .MenuList-1 {
+    font-size: 10px;
+  }
+
+  .theme {
+    height: 30px;
+    width: 30px;
+  }
+
+  .MenuDisplay {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    /
+    /* background-color: #006c6c;
+  color: aliceblue; */
+  }
+}

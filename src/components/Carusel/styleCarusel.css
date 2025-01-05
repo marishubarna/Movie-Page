@@ -1,0 +1,12 @@
+img {
+  /* height: 500px; */
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.Display-Center {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

@@ -1,0 +1,63 @@
+.titleMovieCardFont {
+  font-size: 15px;
+
+  color: #000000;
+}
+
+.smallTitleMovieCardFont {
+  font-size: 10px;
+  color: #000000;
+}
+
+.images-dispay {
+  height: 330px;
+}
+
+.ImagesDisplaySelect {
+  height: 550px;
+}
+
+.MovieDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  margin: 0;
+  list-style-type: none;
+  padding-top: 30px;
+  /* border: 3px solid #000000; */
+  margin: 0;
+}
+
+.MovieListCenter {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  background-color: darkgray;
+  border-top: 2px solid #000000;
+}
+
+@media only screen and (min-width: 350px) and (max-width: 745px) {
+  .MovieDisplay {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin: 0;
+    list-style-type: none;
+    padding-top: 30px;
+    /* border: 3px solid #000000; */
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1000px) {
+  .MovieDisplay {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin: 0;
+    list-style-type: none;
+    padding-top: 30px;
+    /* border: 3px solid #000000; */
+    margin: 0;
+  }
+}
