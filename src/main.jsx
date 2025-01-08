@@ -3,7 +3,8 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Error from "./components/Error/Error.jsx";
-import Filter from "./components/Filter.jsx";
+import MovieCard from "../src/components/MovieItemLIst";
+import Filter from "./components/Filter/Filter.jsx";
 import MovieCardSelect from "./components/MovieSelect/MovieCardSelect.jsx";
 // import { MoviesItems } from "./components/API-File/MovieList.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,11 +24,15 @@ const router = createBrowserRouter([
     element: <Error />,
   },
   {
+    path: "/movieWhatWasSelect",
+    element: <MovieCard />,
+  },
+  {
     path: "/FilterPage",
     element: <Filter />,
   },
   {
-    path: "/MovieCardSelect",
+    path: "/movies",
     element: <MovieCardSelect />,
   },
 ]);

@@ -1,24 +1,40 @@
+// import React from "react";
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const initialState = {
+//   moviesItemsForFilter: [],
+//   filterRating: 0,
+// };
+
+// const Filter = () => {
+//   return <div>Filter</div>;
+// };
+
+// export default Filter;
+
 import React, { useState } from "react";
-import { MoviesItems } from "./API-File/MovieList";
-import MenuFirst from "../components/FirstMenu";
-import MovieCardDetalic from "../components/MovieCardDetalic";
+import { moviesItemsForFilter } from "./DataFilter";
+import MenuFirst from "../FirstMenu";
+import MovieCardDetalic from "../MovieCardDetalic";
 
 const Filter = () => {
-  const [movies, setMovies] = useState(MoviesItems);
+  const [movies, setMovies] = useState(moviesItemsForFilter);
 
   const handleFilterChange = (event) => {
     const rating = event.target.value;
 
     if (rating === "high") {
-      setMovies(MoviesItems.filter((movie) => movie.rating >= 7.0));
+      setMovies(moviesItemsForFilter.filter((movie) => movie.rating >= 7.0));
     } else if (rating === "18+") {
-      setMovies(MoviesItems.filter((movie) => movie.ageRating === 18));
+      setMovies(moviesItemsForFilter.filter((movie) => movie.ageRating === 18));
     } else if (rating === "Фільм") {
       // Fix: Check if genre includes "Фільм"
-      setMovies(MoviesItems.filter((movie) => movie.genre.includes("Фільм")));
+      setMovies(
+        moviesItemsForFilter.filter((movie) => movie.genre.includes("Фільм"))
+      );
       console.log("Filtered movies:", movies); // Debug
     } else {
-      setMovies(MoviesItems);
+      setMovies(moviesItemsForFilter);
     }
   };
 

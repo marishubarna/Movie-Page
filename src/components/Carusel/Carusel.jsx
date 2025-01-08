@@ -7,7 +7,7 @@ const Carusel = () => {
   // Remove prop destructuring since MoviesItems is imported
   return (
     <div className="Display-Center">
-      <Carousel style={{ width: "60%" }}>
+      <Carousel style={{ width: "45%" }}>
         <Carousel.Item>
           <div className="imgSize d-flex justify-content-between">
             {MoviesItems.slice(0, 3).map((movie, index) => (

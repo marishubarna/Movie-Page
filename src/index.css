@@ -73,6 +73,11 @@
 .MenuDisplay {
   display: flex;
   justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7); /* White with opacity */
+  backdrop-filter: blur(5px); 
+  position: sticky;
+  top: 0;
+  z-index: 1;
   /* background-color: #006c6c;
   color: aliceblue; */
 }
