@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 export const movieItemsSearch = [
   "Безхатній Бог - Нораґамі",
   "Ручна поклажа",
@@ -9,4 +12,11 @@ export const movieItemsSearch = [
   "Батальйон 6888",
   "Монолог травниці",
   "Аватар: Останній захисник",
+  <Link to={"/searchDetalic"}> More...</Link>,
 ];
+
+const APISearchItem = () => {
+  return <div>APISearchItem</div>;
+};
+
+export default APISearchItem;

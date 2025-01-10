@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&family=Roboto+Slab:wght@100..900&display=swap");
+
+.checkBox {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px 30px 0px;
+  background-color: cadetblue;
+  padding: 10px;
+}
+
+.MovieDisplayCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.MovieDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 1000px;
+}
+
+.ImagesWidth {
+  height: 350px;
+  width: 250px;
+}
+
+.MovieTitle {
+  font-size: 15px;
+  font-family: "Roboto Slab", serif;
+  color: rgb(0, 0, 0);
+  width: 200px;
+}
+
+.LiMovieList {
+  margin: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  list-style-type: none;
+}
+
+.LiMovieList.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media only screen and (min-width: 350px) and (max-width: 740px) {
+  .CaruselWidth {
+    width: 200px;
+    max-width: 200px;
+  }
+
+  .Display-Center {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin: 0px;
+  }
+}
+
+@media only screen and (min-width: 740px) {
+  .CaruselWidth {
+    width: 730px;
+    max-width: 730px;
+    min-width: 730px;
+    gap: 5px;
+  }
+
+  .Display-Center {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin: 5px;
+  }
+}

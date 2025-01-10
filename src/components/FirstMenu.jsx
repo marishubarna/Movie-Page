@@ -7,7 +7,8 @@ const MenuItems = [
   "Services",
   "About",
   "Contact",
-  <Link to={"/FilterPage"}>Filter</Link>,
+  <Link to={"/filter"}>Filter</Link>,
+  <Link to={"/SearchDetalic"}>Search</Link>,
 ];
 const FirstMenu = ({ setThemes }) => {
   return (

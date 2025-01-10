@@ -3,6 +3,7 @@ import "@radix-ui/themes/styles.css";
 import React, { useState } from "react";
 import "./SearchStyle.css";
 import { movieItemsSearch } from "./APISearchItem";
+import { Link } from "react-router-dom";
 
 export default () => {
   // You can use any api to generate list of countries

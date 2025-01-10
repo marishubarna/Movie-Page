@@ -10,3 +10,33 @@ img {
   justify-content: center;
   margin: 20px;
 }
+
+@media only screen and (min-width: 350px) and (max-width: 740px) {
+  .CaruselWidth {
+    width: 200px;
+    max-width: 200px;
+  }
+
+  .Display-Center {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin: 0px;
+  }
+}
+
+@media only screen and (min-width: 740px) {
+  .CaruselWidth {
+    width: 730px;
+    max-width: 730px;
+    min-width: 730px;
+    gap: 5px;
+  }
+
+  .Display-Center {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin: 5px;
+  }
+}
