@@ -1,11 +1,20 @@
 import React from "react";
 import FirstMenu from "../FirstMenu";
-import MovieCard from "../MovieCard";
+import { useState } from "react";
+import SearchPage from "./SearchPage";
+
 const SearchDetalic = () => {
+  const [Themes, setThemes] = useState(false);
   return (
-    <div>
-      <FirstMenu />
-      <MovieCard />
+    <div
+      style={{
+        backgroundColor: Themes ? "black" : "white",
+        color: Themes ? "white" : "black",
+      }}
+    >
+      <FirstMenu setThemes={setThemes} />
+
+      <SearchPage />
     </div>
   );
 };

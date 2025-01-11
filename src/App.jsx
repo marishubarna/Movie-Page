@@ -9,10 +9,16 @@ const App = () => {
   const [Themes, setThemes] = useState(false);
 
   return (
-    <div>
-      <FirstMenu />
+    <div
+      id="root"
+      style={{
+        backgroundColor: Themes ? "black" : "white",
+        color: Themes ? "white" : "black",
+      }}
+    >
+      <FirstMenu setThemes={setThemes} />
       <Carusel />
-      <MovieList />
+      <MovieList setThemes={setThemes} />
     </div>
   );
 };

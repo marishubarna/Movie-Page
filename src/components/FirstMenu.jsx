@@ -1,16 +1,20 @@
 import React from "react";
 import "../index.css";
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 const MenuItems = [
   <Link to={"/"}>Home</Link>,
   "Services",
   "About",
   "Contact",
-  <Link to={"/filter"}>Filter</Link>,
-  <Link to={"/SearchDetalic"}>Search</Link>,
+
+  <Link to={"/searchPage"}>Search</Link>,
 ];
 const FirstMenu = ({ setThemes }) => {
+  const handelTheme = () => {
+    setThemes((prevTheme) => !prevTheme);
+  };
+
   return (
     <div className="MenuDisplay">
       <ul className="MenuList-1 ">
@@ -21,7 +25,7 @@ const FirstMenu = ({ setThemes }) => {
       <label className="theme">
         <input
           type="checkbox"
-          onClick={() => setThemes((prevTheme) => !prevTheme)}
+          onChange={handelTheme}
           defaultChecked="checked"
           className="input"
         />
@@ -54,11 +58,4 @@ const FirstMenu = ({ setThemes }) => {
   );
 };
 
-export const Themes = () => {
-  const [Themes, setThemes] = useState(false);
-  if (Themes === true) {
-  }
-  return <FirstMenu setThemes={setThemes} />;
-};
-
-export default Themes;
+export default FirstMenu;

@@ -16,7 +16,6 @@
 .MovieDisplay {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 1000px;
 }
 
 .ImagesWidth {
@@ -44,32 +43,44 @@
   transform: translateY(0);
 }
 
-@media only screen and (min-width: 350px) and (max-width: 740px) {
-  .CaruselWidth {
-    width: 200px;
-    max-width: 200px;
-  }
-
-  .Display-Center {
+@media only screen and (min-width: 350px) and (max-width: 500px) {
+  .MovieDisplayCenter {
     display: flex;
     justify-content: center;
-    place-items: center;
-    margin: 0px;
+    margin: 0;
+  }
+
+  .MovieDisplay {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0;
   }
 }
 
-@media only screen and (min-width: 740px) {
-  .CaruselWidth {
-    width: 730px;
-    max-width: 730px;
-    min-width: 730px;
-    gap: 5px;
-  }
-
-  .Display-Center {
+@media only screen and (min-width: 500px) and (max-width: 780px) {
+  .MovieDisplayCenter {
     display: flex;
     justify-content: center;
-    place-items: center;
-    margin: 5px;
+    margin: 0;
+  }
+
+  .MovieDisplay {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 780px) and (max-width: 1300px) {
+  .MovieDisplayCenter {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .MovieDisplay {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0;
   }
 }
