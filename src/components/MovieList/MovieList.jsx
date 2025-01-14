@@ -1,77 +1,66 @@
+// filepath: /c:/Users/Laptop/Documents/it-school/MovieWebSite/src/components/MovieList/MovieList.jsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./MovieList.css";
 
-const MovieList = () => {
+const MovieList = ({ handleSelect }) => {
   const [movies, setMovies] = useState([]);
+  const [TVshow, setTVShow] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handelFilter = (event) => {
-    const filterValue = event.target.value;
-
-    if (filterValue === "high") {
-      setMovies(movies.filter((movie) => movie.vote_average >= 7));
-    } else if (filterValue === "eng") {
-      setMovies(movies.filter((movie) => movie.original_language === "en"));
-    } else if (filterValue === "dateYear") {
-      setMovies(
-        movies.filter(
-          (movie) => new Date(movie.release_date).getFullYear() === 2024
-        )
+  /*Get Movie*/
+  const getMovie = async () => {
+    try {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmFjZDAyY2E5NzJlOTFkYTQ5YWE1YzBmYzc1YzE5ZiIsIm5iZiI6MTczNjQ0ODk3OS4zMDA5OTk5LCJzdWIiOiI2NzgwMWJkMzYwMWFjZmU3YmQ0ZWExY2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.HGORtpmEehpt_P0QpewtFn3oMBrJYsaHL2SboaLbhys",
+          },
+        }
       );
-    } else {
-      setMovies(movies);
+      const data = await response.json();
+      setMovies(data.results || []);
+    } catch (error) {
+      setError(error.message);
     }
   };
 
-  const getMovie = () => {
-    const url =
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmFjZDAyY2E5NzJlOTFkYTQ5YWE1YzBmYzc1YzE5ZiIsIm5iZiI6MTczNjQ0ODk3OS4zMDA5OTk5LCJzdWIiOiI2NzgwMWJkMzYwMWFjZmU3YmQ0ZWExY2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.HGORtpmEehpt_P0QpewtFn3oMBrJYsaHL2SboaLbhys",
-      },
-    };
-
-    fetch(url, options)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch movies");
+  /*Get TVShow*/
+  const getTVShow = async () => {
+    try {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=1&sort_by=vote_average.desc&vote_count.gte=200",
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmFjZDAyY2E5NzJlOTFkYTQ5YWE1YzBmYzc1YzE5ZiIsIm5iZiI6MTczNjQ0ODk3OS4zMDA5OTk5LCJzdWIiOiI2NzgwMWJkMzYwMWFjZmU3YmQ0ZWExY2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.HGORtpmEehpt_P0QpewtFn3oMBrJYsaHL2SboaLbhys",
+          },
         }
-        return res.json();
-      })
-      .then((data) => {
-        setMovies(data.results || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError(err.message);
-        setLoading(false);
-      });
+      );
+      const data = await response.json();
+      setTVShow(data.results || []);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   useEffect(() => {
-    getMovie();
+    const fetchData = async () => {
+      await getMovie();
+      await getTVShow();
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
-
-  // useEffect(() => {
-  //   if (movies.length > 0) {
-  //     let index = 0;
-
-  //     const interval = setInterval(() => {
-  //       setVisible((prev) => [...prev, movies[index]]);
-  //       index += 1;
-
-  //       if (index >= movies.length) {
-  //         clearInterval(interval);
-  //       }
-  //     }, 300);
-  //   }
-  // }, [movies]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -81,27 +70,48 @@ const MovieList = () => {
     return <div>Error: {error}</div>;
   }
 
+  const handleMovieClick = (id) => {
+    handleSelect(id);
+    navigate(`/movie/${id}`);
+  };
+
   return (
-    <div className="body">
-      <div className="checkBox">
-        <select onChange={handelFilter} className="filter-select">
-          <option value="all">All Movies</option>
-          <option value="high">Rating 7.0-9.0</option>
-          <option value="eng">English Language</option>
-          <option value="dateYear">Release Year 2024</option>
-        </select>
-      </div>
-      <div className="MovieDisplayCenter">
-        <ul className="MovieDisplay">
+    <div className="BlurPageofProduct">
+      <div className="GenreHeader">Upcoming Movie</div>
+      <div className="center">
+        <ul className="Column">
           {movies.map((movie) => (
-            <li className="LiMovieList fade-in" key={movie.id}>
+            <li
+              className="Li fade-in"
+              onClick={() => handleMovieClick(movie.id)}
+              key={movie.id}
+            >
               <img
                 className="ImagesWidth"
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
               />
-              <h3 className="MovieTitle">{movie.title}</h3>
+              <h3 className="TitleofMovie">{movie.title}</h3>
               {/* <p>{movie.overview}</p> */}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="GenreHeader">Popular TV Show</div>
+      <div className="center">
+        <ul className="Column">
+          {TVshow.map((show) => (
+            <li
+              className="Li fade-in"
+              onClick={() => handleMovieClick(show.id)}
+              key={show.id}
+            >
+              <img
+                className="ImagesWidth"
+                src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
+                alt={show.name}
+              />
+              <h3 className="TitleofMovie">{show.name}</h3>
             </li>
           ))}
         </ul>
