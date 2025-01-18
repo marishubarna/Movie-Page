@@ -1,0 +1,45 @@
+.backgroundDisplay {
+  background-color: rgba(236, 225, 142, 0.7);
+  margin: 30px 350px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.posterHeight {
+  height: 300px;
+}
+
+.displayCenter {
+  display: flex;
+  justify-content: left;
+  gap: 15px;
+}
+
+.Header {
+  font-size: 25px;
+}
+
+.Date {
+  font-size: 15px;
+}
+
+.AboutFilm {
+  font-size: 20px;
+  text-align: left;
+  margin: 10px;
+}
+
+.displayCeterElement {
+  display: flex;
+  justify-content: center;
+}
+
+.videoHeight {
+  height: 350px;
+}
+
+.videoCenter {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}

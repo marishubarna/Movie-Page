@@ -1,14 +1,18 @@
 import * as Select from "@radix-ui/react-select";
 import "@radix-ui/themes/styles.css";
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./SearchStyle.css";
+import classNames from "classnames";
 
-export default () => {
+export default ({ handleSelect }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [value, setValue] = useState("");
   const [MovieSearch, setMovieSearch] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -60,6 +64,11 @@ export default () => {
     return <div>Error: {error}</div>;
   }
 
+  const handeLinkMovie = (movieId) => {
+    handleSelect(movieId);
+    navigate(`/movie/${movieId}`);
+  };
+
   return (
     <div className="SearchContainerDisplay">
       <Select.Root
@@ -90,9 +99,14 @@ export default () => {
                 ) : (
                   ""
                 )}
-                {MovieSearch.map((item, idx) => (
-                  <SelectItem key={idx} value={item.title}>
-                    {item.title}
+                {MovieSearch.map((movie) => (
+                  <SelectItem
+                    key={movie.id}
+                    value={movie.title}
+                    movie={movie}
+                    handleSelect={handleSelect}
+                  >
+                    {movie.title}
                   </SelectItem>
                 ))}
               </Select.Viewport>
@@ -100,23 +114,36 @@ export default () => {
           </Select.Portal>
         </div>
       </Select.Root>
+      {/* <div className="search-results">
+        {MovieSearch.map((movie) => (
+          <Link
+            key={movie.id}
+            to={`/movie/${movie.id}`}
+            className="search-link"
+          >
+            <button
+              className="search-button"
+              onClick={() => handleSelect(movie.id)}
+            >
+              {movie.title}
+            </button>
+          </Link>
+        ))}
+      </div> */}
     </div>
   );
 };
 
 const SelectItem = React.forwardRef(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <Select.Item
-        className="flex items-center justify-between px-3 cursor-default py-2 duration-150 text-gray-600 data-[state=checked]:text-indigo-600 data-[state=checked]:bg-indigo-50 data-[highlighted]:text-indigo-600 data-[highlighted]:bg-indigo-50 data-[highlighted]:hover:text-indigo-600 data-[highlighted]:hover:bg-indigo-50 outline-none"
-        {...props}
-        ref={forwardedRef}
-      >
-        <Select.ItemText>
-          <div className="pr-4 line-clamp-1">{children}</div>
-        </Select.ItemText>
-        <div className="w-6"></div>
-      </Select.Item>
-    );
-  }
+  ({ children, className, movie, handleSelect, ...props }, forwardedRef) => (
+    <Link
+      to={`/movie/${movie.id}`}
+      className={classNames("search-link", className)}
+      onClick={() => handleSelect(movie.id)}
+    >
+      <div {...props} ref={forwardedRef}>
+        {children}
+      </div>
+    </Link>
+  )
 );

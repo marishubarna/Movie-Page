@@ -1,4 +1,3 @@
-// filepath: /c:/Users/Laptop/Documents/it-school/MovieWebSite/src/components/MovieList/MovieList.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MovieList.css";
@@ -76,45 +75,49 @@ const MovieList = ({ handleSelect }) => {
   };
 
   return (
-    <div className="BlurPageofProduct">
-      <div className="GenreHeader">Upcoming Movie</div>
-      <div className="center">
-        <ul className="Column">
-          {movies.map((movie) => (
-            <li
-              className="Li fade-in"
-              onClick={() => handleMovieClick(movie.id)}
-              key={movie.id}
-            >
-              <img
-                className="ImagesWidth"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <h3 className="TitleofMovie">{movie.title}</h3>
-              {/* <p>{movie.overview}</p> */}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="GenreHeader">Popular TV Show</div>
-      <div className="center">
-        <ul className="Column">
-          {TVshow.map((show) => (
-            <li
-              className="Li fade-in"
-              onClick={() => handleMovieClick(show.id)}
-              key={show.id}
-            >
-              <img
-                className="ImagesWidth"
-                src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
-                alt={show.name}
-              />
-              <h3 className="TitleofMovie">{show.name}</h3>
-            </li>
-          ))}
-        </ul>
+    <div className="mediaDisplay">
+      <div className="BlurPageofProduct">
+        <div className="GenreHeader">Upcoming Movie</div>
+        <div className="center">
+          <ul className="Column">
+            {movies.map((movie) => (
+              <li
+                className="Li fade-in"
+                onClick={() => handleMovieClick(movie.id)}
+                key={movie.id}
+              >
+                <img
+                  className="ImagesWidth"
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <h3 id="TitleOfMovies" className="TitleofMovie">
+                  {movie.title}
+                </h3>
+                {/* <p>{movie.overview}</p> */}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="GenreHeader">Popular TV Show</div>
+        <div className="center">
+          <ul className="Column">
+            {TVshow.map((show) => (
+              <li
+                className="Li fade-in"
+                onClick={() => handleMovieClick(show.id)}
+                key={show.id}
+              >
+                <img
+                  className="ImagesWidth"
+                  src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
+                  alt={show.name}
+                />
+                <h3 className="TitleofMovie">{show.name}</h3>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

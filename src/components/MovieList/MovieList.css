@@ -10,9 +10,10 @@
 }
 
 .BlurPageofProduct {
-  background-color: #a6a9b6;
-  margin: 80px 80px 0px 80px;
+  background-color: rgba(236, 225, 142, 0.7);
+  margin: 80px 250px 0px 250px;
   border-radius: 10px;
+  width: auto;
   padding: 0;
 }
 
@@ -65,44 +66,203 @@
   transform: translateY(0);
 }
 
-@media only screen and (min-width: 350px) and (max-width: 500px) {
-  .MovieDisplayCenter {
+@media only screen and (min-width: 250px) and (max-width: 650px) {
+  .checkBox {
     display: flex;
     justify-content: center;
-    margin: 0;
+    /* margin: 30px 0px 30px 0px; */
+    background-color: cadetblue;
+    /* padding: 10px; */
   }
 
-  .MovieDisplay {
+  .BlurPageofProduct {
+    background-color: #a6a9b6;
+    margin: 0px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .GenreHeader {
+    font-family: "Archivo Black", serif;
+    font-size: 45px;
+    text-align: center;
+    /* margin: 5px; */
+  }
+
+  /* .MovieDisplayCenter {
+  display: flex;
+  justify-content: center;
+} */
+
+  .Column {
     display: grid;
     grid-template-columns: 1fr;
     margin: 0;
   }
-}
 
-@media only screen and (min-width: 500px) and (max-width: 780px) {
-  .MovieDisplayCenter {
-    display: flex;
-    justify-content: center;
-    margin: 0;
+  .center {
+    margin: 0px 25px 0px 0px;
   }
 
-  .MovieDisplay {
+  .ImagesWidth {
+    height: 350px;
+    width: 250px;
+  }
+
+  .TitleofMovie {
+    font-size: 20px;
+    font-family: "Roboto Slab", serif;
+    color: rgb(0, 0, 0);
+    width: 250px;
+    text-align: center;
+  }
+
+  .Li {
+    /* margin: 10px; */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    list-style-type: none;
+  }
+
+  .Li.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 850px) {
+  .checkBox {
+    display: flex;
+    justify-content: center;
+    /* margin: 30px 0px 30px 0px; */
+    background-color: cadetblue;
+    /* padding: 10px; */
+  }
+
+  .BlurPageofProduct {
+    background-color: #a6a9b6;
+    margin: 0px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .GenreHeader {
+    font-family: "Archivo Black", serif;
+    font-size: 45px;
+    text-align: center;
+    /* margin: 5px; */
+  }
+
+  /* .MovieDisplayCenter {
+  display: flex;
+  justify-content: center;
+} */
+
+  .Column {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0;
   }
+
+  .center {
+    margin: 0px 25px 0px 0px;
+  }
+
+  .ImagesWidth {
+    height: 350px;
+    width: 250px;
+  }
+
+  .TitleofMovie {
+    font-size: 20px;
+    font-family: "Roboto Slab", serif;
+    color: rgb(0, 0, 0);
+    width: 250px;
+    text-align: center;
+  }
+
+  .Li {
+    /* margin: 10px; */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    list-style-type: none;
+  }
+
+  .Li.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media only screen and (min-width: 780px) and (max-width: 1300px) {
-  .MovieDisplayCenter {
+@media only screen and (min-width: 850px) and (max-width: 1050px) {
+  .checkBox {
     display: flex;
     justify-content: center;
+    /* margin: 30px 0px 30px 0px; */
+    background-color: cadetblue;
+    /* padding: 10px; */
+  }
+
+  .BlurPageofProduct {
+    background-color: #a6a9b6;
+    margin: 0px;
+    border-radius: 10px;
+
+    width: 80%;
+  }
+
+  .mediaDisplay {
+    display: flex;
+    justify-content: center;
+  }
+
+  .GenreHeader {
+    font-family: "Archivo Black", serif;
+    font-size: 45px;
+    text-align: center;
+    /* margin: 5px; */
+  }
+
+  /* .MovieDisplayCenter {
+  display: flex;
+  justify-content: center;
+} */
+
+  .Column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin: 0;
   }
 
-  .MovieDisplay {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 0;
+  .center {
+    margin: 0px 25px 0px 0px;
+  }
+
+  .ImagesWidth {
+    height: 350px;
+    width: 250px;
+  }
+
+  .TitleofMovie {
+    font-size: 20px;
+    font-family: "Roboto Slab", serif;
+    color: rgb(0, 0, 0);
+    width: 250px;
+    text-align: center;
+  }
+
+  .Li {
+    /* margin: 10px; */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    list-style-type: none;
+  }
+
+  .Li.fade-in {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -51,23 +51,25 @@ bod
   color: #888;
 } */
 
-.black {
+/* .black {
   width: 100%;
   height: 100%;
-  background-color: #313131;
+  background-color: #000000;
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.171) 2px,
+    rgba(255, 254, 254, 0.171) 2px,
     transparent 0
   );
   background-size: 30px 30px;
   background-position: -5px -5px;
-}
+  color: #ffffff;
+  /* border: 4px solid #ffffff; */
 
-.white {
+/* .white {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.171) 2px, transparent 0);
   background-size: 30px 30px;
   background-position: -5px -5px;
-}
+  color: #000000;
+} */

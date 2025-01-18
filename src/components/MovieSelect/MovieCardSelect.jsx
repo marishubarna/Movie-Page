@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Rating from "../Ratting/Ratting";
+import FirstMenu from "./../FirstMenu";
+import "./MovieCardSelect.css"; // Додайте ваші стилі тут
 
 const MovieCardSelect = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [Themes, setTheme] = useState(false);
 
   const getMovie = async () => {
     try {
@@ -35,6 +40,10 @@ const MovieCardSelect = () => {
     }
   }, [id]);
 
+  // const toggleTheme = () => {
+  //   setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  // };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -48,17 +57,39 @@ const MovieCardSelect = () => {
   }
 
   return (
-    <div className="movie-grid">
-      <div key={movie.id}>
-        <h1>{movie.title}</h1>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-        />
-        <h5>{movie.release_date}</h5>
-        <p>{movie.overview}</p>
-        <p>{movie.vote_average}</p>
-        <video src={movie.trailer} controls></video>
+    <div
+      style={{
+        backgroundColor: Themes ? "white" : "black",
+        color: Themes ? "black" : "white",
+      }}
+      className="movie-grid"
+    >
+      <FirstMenu setThemes={setTheme} />
+      <div className="backgroundDisplay">
+        <div className="displayCenter" key={movie.id}>
+          <img
+            className="posterHeight"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+            height={"100%"}
+          />
+          <div className="textDisplay">
+            <h1 className="Header">{movie.title}</h1>
+            <h5 className="Date">{movie.release_date}</h5>
+            <h5>{}</h5>
+            <p>{movie.vote_average}</p>
+          </div>
+        </div>
+        <p className="AboutFilm">{movie.overview}</p>
+        <div className="videoCenter">
+          <video
+            className="videoHeight"
+            height={"100%"}
+            src={movie.trailer}
+            controls
+          ></video>
+        </div>
+        <Rating />
       </div>
     </div>
   );

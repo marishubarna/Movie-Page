@@ -48,12 +48,13 @@ const Carusel = () => {
 
   return (
     <div className="Display-Center">
-      <Carousel className="CaruselWidth" style={{ width: "95%" }}>
+      <Carousel className="CaruselWidth" style={{ width: "100%" }}>
         {movies &&
           movies.map((movie, index) => (
             <Carousel.Item key={index}>
               <img
                 className="d-block w-100"
+                height={"660px"}
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} // Зміна розміру на "original"
                 alt={movie.title}
               />

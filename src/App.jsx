@@ -1,6 +1,5 @@
-// filepath: /c:/Users/Laptop/Documents/it-school/MovieWebSite/src/App.jsx
 import React, { useState } from "react";
-import FirstMenu from "../src/components/FirstMenu";
+import FirstMenu from "./components/FirstMenu";
 import MovieList from "./components/MovieList/MovieList";
 import Carusel from "./components/Carusel/Carusel";
 import MovieCardSelect from "./components/MovieSelect/MovieCardSelect";
@@ -16,10 +15,19 @@ const App = () => {
   };
 
   return (
-    <div id="root" className={Themes ? "black" : "white"}>
-      <FirstMenu setThemes={setThemes} />
+    <div id="root" className={Themes ? "white" : "black"}>
+      <FirstMenu
+        id="MenuDisplay"
+        setThemes={setThemes}
+        style={{ color: Themes ? "white" : "black" }}
+      />
       <Carusel />
-      <MovieList setThemes={setThemes} handleSelect={handleSelect} />
+      <MovieList
+        id="TitleOfMovies"
+        setThemes={setThemes}
+        style={{ color: Themes ? "white" : "black" }}
+        handleSelect={handleSelect}
+      />
       {selectedMovieId && <MovieCardSelect selectedMovieId={selectedMovieId} />}
       {/* <Footer /> */}
     </div>
