@@ -11,6 +11,7 @@ const SearchDetalic = () => {
       style={{
         backgroundColor: Themes ? "white" : "black",
         color: Themes ? "black" : "white",
+        border: Themes ? "black" : "white",
       }}
     >
       <FirstMenu setThemes={setThemes} />

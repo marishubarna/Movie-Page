@@ -9,6 +9,7 @@ const MenuItems = [
   "Contact",
 
   <Link to={"/searchPage"}>Search</Link>,
+  <Link to={"/favourite"}>Favourite</Link>,
 ];
 const FirstMenu = ({ setThemes }) => {
   const handelTheme = () => {

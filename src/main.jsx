@@ -7,6 +7,7 @@ import Error from "./components/Error/Error.jsx";
 import MovieCardSelect from "./components/MovieSelect/MovieCardSelect.jsx";
 import SearchDetalic from "./components/SearchInput/SearchDetalic.jsx";
 // import Rating from "./components/Ratting/Ratting.jsx";
+import Favourite from "../src/components/Favourit/Favouret.jsx";
 import store from "./store/store.jsx"; // Correct the import path if necessary
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/searchPage",
     element: <SearchDetalic />,
+  },
+  {
+    path: "/favourite",
+    element: <Favourite />,
   },
   // {
   //   path: "/rating",

@@ -68,7 +68,7 @@ export default function WithoutCancelDemo() {
         cancel={false}
       />
 
-      <div className="card flex justify-content-center">
+      <div className=" flex justify-content-center">
         <div className="displayrating">
           {/* <Frame /> */}
           <input
@@ -87,6 +87,7 @@ export default function WithoutCancelDemo() {
             onChange={handleRatingInput}
             value={inputs.lastName}
           />
+          <br />
           <textarea
             className="RatingInputRevies"
             type="text"
@@ -95,8 +96,9 @@ export default function WithoutCancelDemo() {
             onChange={handleRatingInput}
             value={inputs.review}
           ></textarea>
+          <br />
           <button className="buttonRating" onClick={handleAddRating}>
-            Додати
+            ADD
           </button>
         </div>
         <ul>

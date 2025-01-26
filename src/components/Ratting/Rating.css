@@ -2,9 +2,16 @@
 .RatingInputFirstName {
   width: 250px;
   background-color: none;
-  padding: 10px;
+  padding: 5px;
   border-bottom: 3px solid #000;
   border-radius: 10px;
+  margin-top: 10px;
+}
+
+.RatingInputRevies {
+  height: 100px;
+  width: 250px;
+  margin-top: 10px;
 }
 
 .RatingInputRevies::placeholder,
@@ -31,8 +38,13 @@
   width: 200px;
 }
 
-/* .displayrating {
-} */
+.displayrating {
+  background-color: none;
+}
+
+.card {
+  background-color: #000;
+}
 
 /* .displayrating {
 } */
