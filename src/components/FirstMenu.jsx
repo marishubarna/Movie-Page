@@ -17,9 +17,7 @@ const MenuItems = [
   <Link className="LinkMenu" to={"/"}>
     Contact
   </Link>,
-  <Link className="LinkMenu" to={"/searchPage"}>
-    Search
-  </Link>,
+
   <Link className="LinkMenu" to={"/favourite"}>
     Favourite
   </Link>,
