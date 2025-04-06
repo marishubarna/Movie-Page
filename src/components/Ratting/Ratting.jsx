@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./Rating.css";
-// import Frame from "../Ratting/Frame";
 import { Rating } from "primereact/rating";
+import { Button, Stack } from "@chakra-ui/react";
 import {
   setRatingValue,
   addReview,
   loadFromLocalStorage,
-} from "../../store/Slice"; // Corrected import path
+} from "../../store/Slice";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "./Rating.css";
 
-export default function WithoutCancelDemo() {
+const WithoutCancelDemo = ({ movieId }) => {
   const dispatch = useDispatch();
   const { value, reviews } = useSelector((state) => state.rating);
-
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -21,95 +21,77 @@ export default function WithoutCancelDemo() {
 
   const handleRatingInput = (e) => {
     const { name, value } = e.target;
-    setInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: value,
-    }));
+    setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleAddRating = () => {
-    if (
-      inputs.firstName.trim() !== "" &&
-      inputs.lastName.trim() !== "" &&
-      inputs.review.trim() !== ""
-    ) {
-      const newReview = { ...inputs, completed: false };
+    if (inputs.firstName && inputs.lastName && inputs.review) {
+      const newReview = {
+        ...inputs,
+        movieId,
+        rating: value,
+        date: new Date().toISOString(),
+      };
       dispatch(addReview(newReview));
-      localStorage.setItem("Rating", JSON.stringify([...reviews, newReview]));
       setInputs({ firstName: "", lastName: "", review: "" });
     }
   };
 
-  useEffect(() => {
-    const storedData = {
-      value: JSON.parse(localStorage.getItem("RatingValue")),
-      reviews: JSON.parse(localStorage.getItem("Rating")),
-    };
-    dispatch(loadFromLocalStorage(storedData));
-  }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem("RatingValue", JSON.stringify(value));
-  }, [value]);
-
-  const handleDelete = (index) => {
-    const updatedReviews = reviews.filter((_, i) => i !== index);
-    dispatch(loadFromLocalStorage({ value, reviews: updatedReviews }));
-    localStorage.setItem("Rating", JSON.stringify(updatedReviews));
-  };
-
   return (
-    <div className="">
-      <Rating
-        value={value}
-        onChange={(e) => {
-          dispatch(setRatingValue(e.value));
-        }}
-        cancel={false}
-      />
-
-      <div className=" flex justify-content-center">
-        <div className="displayrating">
-          {/* <Frame /> */}
+    <div className="rating-container">
+      <div className="rating-stars">
+        <Rating
+          value={value}
+          onChange={(e) => dispatch(setRatingValue(e.value))}
+          cancel={false}
+          stars={5}
+        />
+      </div>
+      <div className="review-form">
+        <Stack spacing={4}>
           <input
-            className="RatingInputFirstName"
+            className="rating-input"
             type="text"
             name="firstName"
             placeholder="First Name"
-            onChange={handleRatingInput}
             value={inputs.firstName}
+            onChange={handleRatingInput}
           />
           <input
-            className="RatingInputLastName"
+            className="rating-input"
             type="text"
             name="lastName"
             placeholder="Last Name"
-            onChange={handleRatingInput}
             value={inputs.lastName}
-          />
-          <br />
-          <textarea
-            className="RatingInputRevies"
-            type="text"
-            name="review"
-            placeholder="Leave your thing..."
             onChange={handleRatingInput}
+          />
+          <textarea
+            className="rating-textarea"
+            name="review"
+            placeholder="Your review..."
             value={inputs.review}
-          ></textarea>
-          <br />
-          <button className="buttonRating" onClick={handleAddRating}>
-            ADD
-          </button>
-        </div>
-        <ul>
-          {reviews.map((item, index) => (
-            <li className="RatingLI" key={index}>
-              {item.firstName} {item.lastName}: <br /> {item.review} <br />{" "}
-              <button onClick={() => handleDelete(index)}>Delete</button>
-            </li>
+            onChange={handleRatingInput}
+          />
+          <Button colorScheme="blue" onClick={handleAddRating}>
+            Submit Review
+          </Button>
+        </Stack>
+      </div>
+      <div className="reviews-list">
+        {reviews
+          .filter((review) => review.movieId === movieId)
+          .map((review, index) => (
+            <div key={index} className="review-item">
+              <p className="review-author">
+                {review.firstName} {review.lastName}
+              </p>
+              <Rating value={review.rating} readOnly cancel={false} stars={5} />
+              <p className="review-text">{review.review}</p>
+            </div>
           ))}
-        </ul>
       </div>
     </div>
   );
-}
+};
+
+export default WithoutCancelDemo;

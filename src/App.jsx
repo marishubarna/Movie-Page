@@ -3,11 +3,9 @@ import FirstMenu from "./components/FirstMenu";
 import MovieList from "./components/MovieList/MovieList";
 import Carusel from "./components/Carusel/Carusel";
 import MovieCardSelect from "./components/MovieSelect/MovieCardSelect";
-// import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 const App = () => {
-  const [Themes, setThemes] = useState(false);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
 
   const handleSelect = (id) => {
@@ -15,19 +13,10 @@ const App = () => {
   };
 
   return (
-    <div id="root" className={Themes ? "white" : "black"}>
-      <FirstMenu
-        id="MenuDisplay"
-        setThemes={setThemes}
-        style={{ color: Themes ? "white" : "black" }}
-      />
+    <div id="root">
+      <FirstMenu id="MenuDisplay" />
       <Carusel />
-      <MovieList
-        id="TitleOfMovies"
-        setThemes={setThemes}
-        style={{ color: Themes ? "white" : "black" }}
-        handleSelect={handleSelect}
-      />
+      <MovieList id="TitleOfMovies" handleSelect={handleSelect} />
       {selectedMovieId && <MovieCardSelect selectedMovieId={selectedMovieId} />}
       {/* <Footer /> */}
     </div>

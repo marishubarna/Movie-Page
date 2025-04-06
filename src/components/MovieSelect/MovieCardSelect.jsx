@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Rating from "../Ratting/Ratting";
+
 import FirstMenu from "./../FirstMenu";
 import "./MovieCardSelect.css"; // Додайте ваші стилі тут
 
@@ -9,8 +9,6 @@ const MovieCardSelect = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const [Themes, setTheme] = useState(false);
 
   const getMovie = async () => {
     try {
@@ -40,10 +38,6 @@ const MovieCardSelect = () => {
     }
   }, [id]);
 
-  // const toggleTheme = () => {
-  //   setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  // };
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -57,14 +51,8 @@ const MovieCardSelect = () => {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: Themes ? "white" : "black",
-        color: Themes ? "black" : "white",
-      }}
-      className="movie-grid"
-    >
-      <FirstMenu setThemes={setTheme} />
+    <div className="movie-grid">
+      <FirstMenu />
       <div className="backgroundDisplay">
         <div className="displayCenter" key={movie.id}>
           <img
@@ -89,7 +77,6 @@ const MovieCardSelect = () => {
             controls
           ></video>
         </div>
-        <Rating />
       </div>
     </div>
   );

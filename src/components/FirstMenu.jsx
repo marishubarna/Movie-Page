@@ -1,106 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
-// import { useState } from "react";
+import FadeIn from "./Animation/FadeIn";
 import { Link } from "react-router-dom";
-const MenuItems = [
-  <Link to={"/"}>Home</Link>,
-  "Services",
-  "About",
-  "Contact",
+import SearchFuncktion from "./SearchInput/SearchFuncktion";
 
-  <Link to={"/searchPage"}>Search</Link>,
-  <Link to={"/favourite"}>Favourite</Link>,
+const MenuItems = [
+  <Link className="LinkMenu" to={"/"}>
+    Home
+  </Link>,
+  <Link className="LinkMenu" to={"/"}>
+    Services
+  </Link>,
+  <Link className="LinkMenu" to={"/"}>
+    About
+  </Link>,
+  <Link className="LinkMenu" to={"/"}>
+    Contact
+  </Link>,
+  <Link className="LinkMenu" to={"/searchPage"}>
+    Search
+  </Link>,
+  <Link className="LinkMenu" to={"/favourite"}>
+    Favourite
+  </Link>,
 ];
-const FirstMenu = ({ setThemes }) => {
-  const handelTheme = () => {
-    setThemes((prevTheme) => !prevTheme);
+
+const FirstMenu = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle("dark-mode");
+  };
+
+  const handleSelect = (movieId) => {
+    // Handle movie selection if needed
+    console.log("Selected movie:", movieId);
   };
 
   return (
     <div className="display-center">
       <div id="MenuDisplay" className="MenuDisplay">
-        <ul className="MenuList-1 ">
+        <ul className="MenuList-1">
           {MenuItems.map((item, index) => (
-            <li key={index}>{item}</li>
+            <FadeIn key={index}>
+              <li className="LinkMenu">{item}</li>
+            </FadeIn>
           ))}
         </ul>
-        {/*Switches */}
         <div className="switchDisplay">
           <label className="switch">
             <input
-              id="input"
               type="checkbox"
-              onChange={handelTheme}
-              defaultChecked="darkTheme"
+              checked={isDarkMode}
+              onChange={toggleTheme}
             />
-            <div className="slider round">
-              <div className="sun-moon">
-                <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="moon-dot-2" className="moon-dot" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="moon-dot-3" className="moon-dot" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg
-                  id="light-ray-1"
-                  className="light-ray"
-                  viewBox="0 0 100 100"
-                >
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg
-                  id="light-ray-2"
-                  className="light-ray"
-                  viewBox="0 0 100 100"
-                >
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg
-                  id="light-ray-3"
-                  className="light-ray"
-                  viewBox="0 0 100 100"
-                >
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="cloud-1" className="cloud-dark" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="cloud-2" className="cloud-dark" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="cloud-3" className="cloud-dark" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="cloud-4" className="cloud-light" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="cloud-5" className="cloud-light" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-                <svg id="cloud-6" className="cloud-light" viewBox="0 0 100 100">
-                  <circle cx={50} cy={50} r={50} />
-                </svg>
-              </div>
-              <div className="stars">
-                <svg id="star-1" className="star" viewBox="0 0 20 20">
-                  <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
-                </svg>
-                <svg id="star-2" className="star" viewBox="0 0 20 20">
-                  <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
-                </svg>
-                <svg id="star-3" className="star" viewBox="0 0 20 20">
-                  <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
-                </svg>
-                <svg id="star-4" className="star" viewBox="0 0 20 20">
-                  <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
-                </svg>
-              </div>
-            </div>
+            <span className="slider"></span>
+            <span className="clouds_stars"></span>
           </label>
         </div>
+      </div>
+      <div className="search-container">
+        <SearchFuncktion handleSelect={handleSelect} />
       </div>
     </div>
   );

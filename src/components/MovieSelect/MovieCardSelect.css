@@ -6,13 +6,14 @@
 }
 
 .posterHeight {
-  height: 300px;
+  max-width: 300px;
+  object-fit: cover;
 }
 
 .displayCenter {
   display: flex;
-  justify-content: left;
-  gap: 15px;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .Header {
@@ -26,7 +27,8 @@
 .AboutFilm {
   font-size: 20px;
   text-align: left;
-  margin: 10px;
+  margin: 20px 0;
+  line-height: 1.6;
 }
 
 .displayCeterElement {
@@ -39,7 +41,15 @@
 }
 
 .videoCenter {
+  margin: 20px 0;
   display: flex;
   justify-content: center;
-  margin: 10px;
+}
+
+.movie-grid {
+  padding: 20px;
+}
+
+.textDisplay {
+  flex: 1;
 }
